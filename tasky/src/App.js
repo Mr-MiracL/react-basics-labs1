@@ -13,12 +13,7 @@ function App() {
       { id: 3, title: "Tidy up", deadline: "Today", done: false}
     ]
   });
-  const [ formState, setFormState ] = useState({
-    title: "",
-    description: "",
-    deadline: ""
-  });
-  console.log(formState)
+  
   const doneHandler = (taskIndex) => {
     const tasks = [...taskState.tasks];
     tasks[taskIndex].done = !tasks[taskIndex].done;
@@ -60,6 +55,13 @@ function App() {
       tasks.push(form);
       setTaskState({tasks});
     }
+    const [ formState, setFormState ] = useState({
+      title: "",
+      description: "",
+      deadline: ""
+    });
+    console.log(formState)
+  
   return (
     <div className="container">
       <h1>Tasky</h1>
@@ -74,9 +76,7 @@ function App() {
       deleteTask = {() => deleteHandler(index)}
     />
   ))}
-  <AddTaskForm submit={formSubmitHandler} change={formChangeHandler} />
-  
- 
+    <AddTaskForm submit={formSubmitHandler} change={formChangeHandler} />
     </div>
   );
 }
